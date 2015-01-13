@@ -113,10 +113,12 @@
 
     function wander() {
         if (wanderDirection == 1) {
+            wanderDirection = 0;
             //go left
             player.body.velocity.x = -150;
             player.animations.play('left');
         } else {
+            wanderDirection = 1;
             //go right
             player.body.velocity.x = 150;
             player.animations.play('right');
