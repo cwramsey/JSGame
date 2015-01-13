@@ -100,12 +100,24 @@
         if (cursors.up.isDown && player.body.touching.down) {
             player.body.velocity.y = -350;
         }
+
+        wander();
     }
 
     function collectStar(player, star) {
         star.kill();
         score += 10;
         scoreText.text = 'Score: ' + score;
+    }
+
+    function wander() {
+        var direction = Math.random() * 100;
+
+        if (direction < 50) {
+            player.velocity.x = -150;
+        } else {
+            player.velocity.x = 150;
+        }
     }
 
 </script>
