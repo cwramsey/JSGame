@@ -111,12 +111,14 @@
     }
 
     function wander() {
-        var direction = Math.random() * 100;
+        var direction = Math.random() * 10000;
 
-        if (direction < 50) {
+        if (direction < 5000) {
             player.body.velocity.x = -150;
+            player.animations.play('left');
         } else {
             player.body.velocity.x = 150;
+            player.animations.play('right');
         }
     }
 
