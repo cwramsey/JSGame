@@ -29,7 +29,7 @@
         game.add.sprite(0, 0, 'sky');
 
         platforms = game.add.group();
-        platforms.enableBody();
+        platforms.enableBody = true;
 
         var ground = platforms.create(0, game.World.height - 64, 'ground');
         ground.scale.setTo(2, 2);
