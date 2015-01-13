@@ -15,8 +15,9 @@
 <script type="text/javascript">
 
     var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-    var platforms, player, cursors, stars, score, scoreText;
+    var platforms, player, cursors, stars, score, scoreText, timer, wanderDirection;
     score = 0;
+    wanderDirection = 1;
 
     function preload() {
         game.load.image('sky', 'assets/sky.png');
@@ -101,7 +102,7 @@
             player.body.velocity.y = -350;
         }
 
-        wander();
+        game.time.events.repeat(Phaser.Timer.SECOND * 4, 10, wander, this);
     }
 
     function collectStar(player, star) {
@@ -111,12 +112,12 @@
     }
 
     function wander() {
-        var direction = Math.random() * 10000;
-
-        if (direction < 5000) {
+        if (wanderDirection == 1) {
+            //go left
             player.body.velocity.x = -150;
             player.animations.play('left');
         } else {
+            //go right
             player.body.velocity.x = 150;
             player.animations.play('right');
         }
